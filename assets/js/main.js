@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const browseButton = document.getElementById("browseButton");
   const variantsTable = document.getElementById("variants-table");
   const addVariantButton = document.getElementById("add-variant");
+  const printInvoicetButton = document.getElementById("printInvoice");
+
+  
   
   // Preloader for first-time visitors
 //   const isFirstVisit = !localStorage.getItem("visited");
@@ -186,7 +189,7 @@ if (editor) {
 }
 
 
-
+if(dropzone){
   dropzone.addEventListener("dragover", (e) => {
     e.preventDefault();
     dropzone.style.borderColor = "#6c63ff";
@@ -209,6 +212,9 @@ if (editor) {
     const files = Array.from(fileInput.files);
     handleFiles(files);
   });
+}
+
+
 
   function handleFiles(files) {
     files.forEach((file) => {
@@ -301,6 +307,7 @@ const renderVariants = () => {
   });
 };
 
+if(addVariantButton){
 // Add new variant
 addVariantButton.addEventListener("click", () => {
   variants.push({
@@ -312,17 +319,21 @@ addVariantButton.addEventListener("click", () => {
   });
   renderVariants();
 });
+}
+
 
 // Delete a variant
-variantsTable.addEventListener("click", (e) => {
-  const deleteButton = e.target.closest("[data-index]");
-  if (deleteButton && deleteButton.querySelector("i.fa-trash")) {
-    const index = deleteButton.dataset.index;
-    variants.splice(index, 1);
-    renderVariants();
-  }
-});
+if(variantsTable){
+  variantsTable.addEventListener("click", (e) => {
+    const deleteButton = e.target.closest("[data-index]");
+    if (deleteButton && deleteButton.querySelector("i.fa-trash")) {
+      const index = deleteButton.dataset.index;
+      variants.splice(index, 1);
+      renderVariants();
+    }
+  });
 
+  
 // Adjust quantity
 variantsTable.addEventListener("click", (e) => {
   const index = e.target.dataset.index;
@@ -360,15 +371,71 @@ variantsTable.addEventListener("input", (e) => {
   }
 });
 
+
 // Initial render
 renderVariants();
 
+}
 
 
+
+
+
+// initialize Tagify
 var inputTags = document.querySelector('#inputTags');
 
-// initialize Tagify on the above input node reference
-new Tagify(inputTags)
+if(inputTags){
+  var tagify = new Tagify(inputTags);
+  tagify.DOM.input.blur();
+}
+
+
+
+printInvoicetButton.addEventListener("click", (e) => {
+
+var printContent = document.getElementById('invoice-section');
+var printDiv = document.createElement('div');
+printDiv.id = 'printDiv';
+printDiv.innerHTML = printContent.innerHTML;
+document.body.appendChild(printDiv);
+var style = document.createElement('style');
+style.innerHTML = `
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+        #printDiv, #printDiv * {
+            visibility: visible;
+        }
+        #printDiv {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+        .container, .card, .card-body {
+            page-break-inside: avoid;
+        }
+        table {
+            width: 100%;
+            page-break-inside: auto;
+        }
+        .table th, .table td {
+            white-space: nowrap;
+        }
+    }
+`;
+document.head.appendChild(style);
+window.print();
+document.body.removeChild(printDiv);
+document.head.removeChild(style);
+});
+
+
 
 });
 

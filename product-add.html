@@ -48,16 +48,27 @@
                <div class="sidebar-body custom-scrollbar">
                     <ul class="sidebar-menu">
                         <li class="sidebar-label">Menu</li>
-                        <li><a href="#" class="text-black sidebar-link"><i class="fa-solid fa-house"></i><p>Overview</p></a></li>
-                        <li><a href="#" class="text-black sidebar-link"><i class="fa-solid fa-chart-simple"></i><p>Analytics</p></a></li>
+                        <li><a href="index.html" class="text-black sidebar-link"><i class="fa-solid fa-house"></i><p>Overview</p></a></li>
+                        <li><a href="#" class="text-black sidebar-link submenu-parent"><i class="fa-solid fa-list"></i><p>Category <i class="fa-solid fa-angle-down right-icon"></i></p></a>
+                            <ul class="sidebar-submenu">
+                                <li><a href="category-add.html" class="submenu-link">Add</a></li>
+                                <li><a href="category-list.html" class="submenu-link">List</a></li>
+                            </ul>
+                        </li>
                         <li><a href="#" class="text-black sidebar-link submenu-parent active"><i class="fa-brands fa-microsoft"></i><p>Products <i class="fa-solid fa-angle-down right-icon"></i></p></a>
                             <ul class="sidebar-submenu open">
                                 <li><a href="product-add.html" class="submenu-link active">Add</a></li>
                                 <li><a href="product-list.html" class="submenu-link">List</a></li>
                             </ul>
                         </li>
-                        <li><a href="#" class="text-black sidebar-link"><i class="fa-solid fa-bucket"></i><p>Order</p></a></li>
-                        <li><a href="#" class="text-black sidebar-link"><i class="fa-regular fa-credit-card"></i><p>Transaction</p></a></li>
+                        <li><a href="#" class="text-black sidebar-link submenu-parent"><i class="fa-solid fa-bucket"></i><p>Order <i class="fa-solid fa-angle-down right-icon"></i></p></a>
+                            <ul class="sidebar-submenu">
+                                <li><a href="order-list.html" class="submenu-link">List</a></li>
+                                <li><a href="order-details.html" class="submenu-link">Details</a></li>
+                                <li><a href="invoice.html" class="submenu-link">Invoice</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="user-list.html" class="text-black sidebar-link"><i class="fa-regular fa-user"></i><p>Customers</p></a></li>
                         <li><a href="#" class="text-black sidebar-link"><i class="fa-solid fa-file-invoice"></i><p>Reports</p></a></li>
                         <li class="sidebar-label">Other</li>
                         <li><a href="#" class="text-black sidebar-link"><i class="fa-regular fa-message"></i><p>Message</p></a></li>
@@ -251,7 +262,7 @@
                                                 </div>
                                                 <p>Drag and drop your file here</p>
                                                 <p>or</p>
-                                                <button id="browseButton">Browse files</button>
+                                                <a href="javascript:void(0)" id="browseButton">Browse files</a>
                                                 <input id="fileInput" type="file" multiple hidden />
                                                 </div>
                                                 <div id="preview" class="preview-grid"></div>
@@ -298,7 +309,7 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="inputTags" class="form-label">Tags</label>
-                                                        <input type="text" class="form-control" id="inputTags" autofocus value='tag1, tag2' placeholder="Enter tags here">
+                                                        <input type="text" class="form-control" id="inputTags"  placeholder="Enter tags here">
                                                     </div>
                                                 </div>
                                             </div>
@@ -336,7 +347,7 @@
                                     <div class="card shadow-sm border-0 border-radius-12 mb-4">
                                         <div class="card-body p-4 d-flex">
                                             <a  href="javascript:void(0)" class="btn text-primary border-color hover-bg-primary w-50 me-2"> Discard</a>
-                                            <button type="submit" class="btn custom-bg-primary w-50 text-white btn-hover"> Save</button>
+                                            <button type="submit" class="btn custom-bg-primary w-50 text-white btn-hover">Save</button>
                                         </div>
                                     </div>
                                 </div>

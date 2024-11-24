@@ -454,25 +454,25 @@ h1, h2, h3 {
   min-width: 90px;
 }
 
-/* In Stock */
-.status-in-stock {
+.status-success {
   background-color: #e6fff1;
   color: #28a745;
-  /* border: 1px solid #c3e6cb; */
 }
 
-/* Out of Stock */
-.status-out-stock {
+.status-danger {
   background-color: #ffe6e6;
   color: #dc3545;
-  /* border: 1px solid #f5c6cb; */
 }
 
-/* Restock */
-.status-restock {
+
+.status-warning {
+  background-color: #fef9c3;
+  color:  #ca8a04;
+}
+
+.status-info {
   background-color: #e6f7ff;
   color: #007bff;
-  /* border: 1px solid #b8daff; */
 }
 
 .p-img-thumbnail {
@@ -584,7 +584,7 @@ h1, h2, h3 {
   background-color: #234e4d;
   padding: 0.4rem 1rem;
   border-radius: 0.5rem;
-  width: 400px;
+  width: 300px;
 }
 
 .search-box input {
@@ -715,6 +715,7 @@ h1, h2, h3 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 
@@ -828,4 +829,61 @@ h1, h2, h3 {
 
 .short-info {
   font-size: 11px;
+}
+
+/* pagination */
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.pagination li {
+  display: inline-block;
+}
+
+.pagination-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background-color: white;
+  color: #1f2937;
+  transition: all 0.3s ease;
+}
+
+.pagination-link:hover:not(.active):not(.disabled) {
+  background-color: #fff;
+  border: 1px solid #065f46;
+  color: #000;
+}
+
+.pagination-link.active {
+  background-color: var(--primary);
+  color: #fff;
+  pointer-events: none;
+}
+
+.pagination-link.disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+.table-responsive .dropdown,
+.table-responsive .btn-group,
+.table-responsive .btn-group-vertical {
+    position: static;
 }

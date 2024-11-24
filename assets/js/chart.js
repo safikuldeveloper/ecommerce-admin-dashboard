@@ -12,15 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
                 datasets: [{
-                    label: "My First dataset",
+                    label: "Sales",
                     data: [0, 5, 15, 25, 40, 45, 50, 70, 80, 90, 95, 98],
                     borderColor: '#00C9FF',
                     borderWidth: 5,
-                    backgroundColor: gradientLine, // Gradient background
+                    backgroundColor: gradientLine,
                     pointBackgroundColor: '#92FE9D',
-                    pointRadius: 0, // Hide points by default
-                    pointHoverRadius: 0, // Show points on hover
-                    tension: 0.4, // Smooth curves
+                    pointRadius: 0,
+                    pointHoverRadius: 0,
+                    tension: 0.4,
                 }]
             },
             options: {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
                 datasets: [{
-                    label: 'My Dataset',
+                    label: 'Sales',
                     data: [10, 30, 40, 50, 60, 100],
                     backgroundColor: '#00C9FF',
                     borderRadius: 4,

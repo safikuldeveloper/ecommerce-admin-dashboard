@@ -12,7 +12,7 @@
 	<meta property="og:description" content="Ecom  Admin  Bootstrap 5 Template" />
 	<meta property="og:image" content="#" />
 	<meta name="format-detection" content="telephone=no">
-    <title>Ecom Bootstrap Admin Dashboard</title>
+    <title>User List</title>
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="./assets/icons/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="./assets/icons/fontawesome/css/brands.min.css" rel="stylesheet">
@@ -44,10 +44,10 @@
                    <div class="lg-logo"><a href="index.html">Logo</a></div>
                    <div class="sm-logo"><a href="index.html">L</a></div>
                </div>
-               <div class="sidebar-body  custom-scrollbar">
+               <div class="sidebar-body custom-scrollbar">
                     <ul class="sidebar-menu">
                         <li class="sidebar-label">Menu</li>
-                        <li><a href="index.html" class="text-black sidebar-link active"><i class="fa-solid fa-house"></i><p>Overview</p></a></li>
+                        <li><a href="index.html" class="text-black sidebar-link"><i class="fa-solid fa-house"></i><p>Overview</p></a></li>
                         <li><a href="#" class="text-black sidebar-link submenu-parent"><i class="fa-solid fa-list"></i><p>Category <i class="fa-solid fa-angle-down right-icon"></i></p></a>
                             <ul class="sidebar-submenu">
                                 <li><a href="category-add.html" class="submenu-link">Add</a></li>
@@ -67,7 +67,7 @@
                                 <li><a href="invoice.html" class="submenu-link">Invoice</a></li>
                             </ul>
                         </li>
-                        <li><a href="user-list.html" class="text-black sidebar-link"><i class="fa-regular fa-user"></i><p>Customers</p></a></li>
+                        <li><a href="user-list.html" class="text-black sidebar-link active"><i class="fa-regular fa-user"></i><p>Customers</p></a></li>
                         <li><a href="#" class="text-black sidebar-link"><i class="fa-solid fa-file-invoice"></i><p>Reports</p></a></li>
                         <li class="sidebar-label">Other</li>
                         <li><a href="#" class="text-black sidebar-link"><i class="fa-regular fa-message"></i><p>Message</p></a></li>
@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="col-6 col-lg-6 d-flex">
                             <button class="menu-toggle btn btn-lg text-white d-block d-lg-none "><i class="fa-solid fa-bars"></i></button>
-                            <h1 class="header-title d-none d-lg-block ">Dashboard Overview</h1>
+                            <h1 class="header-title d-none d-lg-block ">Order</h1>
                         </div>
                         <div class="col-6 col-lg-6 d-flex justify-content-end">
                             <div>
@@ -187,96 +187,22 @@
                 <div class="extra-header"></div>
                 <div class="card-service-section px-0 px-md-0 px-lg-3">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-xl-4 col-xxl-4 col-lg-6 col-sm-6 mb-3">
-                                <div class="card shadow-sm border-0 border-radius-12">
-                                    <div class="card-body p-4">
-                                        <div class="row">
-                                                <div class="col-8">
-                                                    <h6 class="text-muted mb-2">Today's Revenue</h6>
-                                                    <h3 class="fw-bold">₹15,00,000</h3>
-                                                    <div class="d-flex align-items-center">
-                                                    <span class="text-success fw-bold me-2 badge">
-                                                        <i class="fa-solid fa-arrow-up"></i> 4.8%
-                                                    </span>
-                                                    <span class="text-muted">from yesterday</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-4 d-flex justify-content-center align-items-center">
-                                                
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="d-flex justify-content-between align-items-center bg-teal">
+                            <!-- Import Buttons -->
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-light d-flex align-items-center gap-2">
+                                  <i class="fa-solid fa-cloud-arrow-up"></i> Import
+                                </button>
+                              </div>
+                            <!-- Search Input -->
+                            <div class="search-box align-items-center  d-flex">
+                              <i class="fas fa-search text-light"></i>
+                              <input
+                                type="text"
+                                class="form-control border-0 bg-transparent text-light"
+                                placeholder="Search user"
+                              />
                             </div>
-                            <div class="col-xl-4 col-xxl-4 col-lg-6 col-sm-6  mb-3">
-                                <div class="card shadow-sm border-0 border-radius-12">
-                                    <div class="card-body p-4">
-                                        <div class="row">
-                                                <div class="col-8">
-                                                    <h6 class="text-muted mb-2">Today's Orders</h6>
-                                                    <h3 class="fw-bold">7,506</h3>
-                                                    <div class="d-flex align-items-center">
-                                                    <span class="text-success fw-bold me-2 badge">
-                                                        <i class="fa-solid fa-arrow-up"></i> 4.8%
-                                                    </span>
-                                                    <span class="text-muted">from yesterday</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-4 d-flex justify-content-center align-items-center ">
-                                                
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-xxl-4 col-lg-6 col-sm-6  mb-3">
-                                <div class="card shadow-sm border-0 border-radius-12">
-                                    <div class="card-body p-4">
-                                        <div class="row">
-                                                <div class="col-8">
-                                                    <h6 class="text-muted mb-2">Today's Visitors</h6>
-                                                    <h3 class="fw-bold">36,524</h3>
-                                                    <div class="d-flex align-items-center">
-                                                    <span class="text-success fw-bold me-2 badge">
-                                                        <i class="fa-solid fa-arrow-up"></i> 4.8%
-                                                    </span>
-                                                    <span class="text-muted">from yesterday</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-4 d-flex justify-content-center align-items-center ">
-                                                
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="chart-section px-0 px-md-0 px-lg-3">
-                    <div class="container-fluid mt-4">
-                        <div class="row">
-                                <div class="col-lg-8 mb-4">
-                                <div class="card shadow-sm border-0 border-radius-12">
-                                    <div class="card-body p-4">
-                                            <div class="mb-3">
-                                            <h5 class="fw-bold">Sales Analytics</h5>
-                                            </div>
-                                        <canvas id="LineChart" class="chart-content"></canvas>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="col-lg-4">
-                                <div class="card shadow-sm border-0 border-radius-12">
-                                    <div class="card-body p-4">
-                                            <div class="mb-3">
-                                            <h5 class="fw-bold">Returns</h5>
-                                            </div>
-                                        <canvas id="BarChart" class="chart-content"></canvas>
-                                    </div>
-                                </div>
-                                </div>
                         </div>
                     </div>
                 </div>
@@ -286,92 +212,63 @@
                             <div class="card-body p-4">
                                 <div class="row align-items-center mb-3">
                                     <!-- Title -->
-                                    <div class="col-12 col-md-auto mb-3 mb-md-0">
-                                        <h5 class="fw-bold text-start text-md-start">Best Selling Products</h5>
-                                    </div>
-                                    <!-- Filters and Sort -->
-                                    <div class="col-12 col-md d-flex justify-content-center justify-content-md-end flex-wrap gap-2">
-                                        <!-- Filter Dropdown -->
-                                        <div class="dropdown">
-                                            <a class="nav-link custom-bg-primary text-white rounded px-3 py-2" href="#" id="FilterMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Filter By <i class="fas fa-filter"></i>
-                                            </a>
-                                            <ul class="dropdown-menu" aria-labelledby="FilterMenuLink">
-                                                <li><a class="dropdown-item py-2" href="#">In Stock</a></li>
-                                                <li><a class="dropdown-item py-2" href="#">Out of Stock</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- Sort Dropdown -->
-                                        <div class="dropdown">
-                                            <a class="nav-link custom-bg-primary text-white rounded px-3 py-2" href="#" id="SortMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Sort By: Relevance <i class="fa-solid fa-arrow-up-wide-short"></i>
-                                            </a>
-                                            <ul class="dropdown-menu" aria-labelledby="SortMenuLink">
-                                                <li><a class="dropdown-item py-2" href="#">Low to High</a></li>
-                                                <li><a class="dropdown-item py-2" href="#">High to Low</a></li>
-                                            </ul>
-                                        </div>
+                                    <div class="col-12 col-md-auto mb-0 mb-md-0 d-flex">
+                                        <h5 class="fw-bold text-start text-md-start">User List</h5>
                                     </div>
                                 </div>                            
                                 <div class="table-responsive">
                                     <table class="table align-middle">
                                         <thead>
-                                        <tr>
-                                            <th scope="col" class="py-3">Product ID</th>
-                                            <th scope="col" class="py-3">Image</th>
-                                            <th scope="col" class="py-3">Product Name</th>
-                                            <th scope="col" class="py-3">Price</th>
-                                            <th scope="col" class="py-3">Total Sales</th>
-                                            <th scope="col" class="py-3">Stock</th>
-                                            <th scope="col" class="py-3">Status</th>
-                                            <th scope="col" class="py-3">Actions</th>
-                                        </tr>
+                                            <tr>
+                                                <th scope="col" class="py-3">ID</th>
+                                                <th scope="col" class="py-3">Name</th>
+                                                <th scope="col" class="py-3">Email</th>
+                                                <th scope="col" class="py-3">Phone</th>
+                                                <th scope="col" class="py-3">Join Date</th>
+                                                <th scope="col" class="py-3">Actions</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>#12598</td>
-                                            <td><img src="./assets/images/p1.jfif" alt="Product Image" class="p-img-thumbnail"></td>
-                                            <td>Off-white shoulder wide...</td>
-                                            <td>₹4,099</td>
-                                            <td>1246</td>
-                                            <td>25</td>
-                                            <td><span class="status-badge status-success">In Stock</span></td>
-                                            <td>
-                                                <a href="#" class="btn btn-sm"><i class="fa-solid fa-edit"></i></a>
-                                                <a href="#" class="btn btn-sm"><i class="fa-solid fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>#12598</td>
-                                            <td><img src="./assets/images/p2.jfif" alt="Product Image" class="p-img-thumbnail"></td>
-                                            <td>Green Velvet semi-sleeve...</td>
-                                            <td>₹4,099</td>
-                                            <td>1246</td>
-                                            <td>25</td>
-                                            <td><span class="status-badge status-danger">Out of Stock</span></td>
-                                            <td>
-                                                <a href="#" class="btn btn-sm"><i class="fa-solid fa-edit"></i></a>
-                                                <a href="#" class="btn btn-sm"><i class="fa-solid fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>#12598</td>
-                                            <td><img src="./assets/images/p3.jfif" alt="Product Image" class="p-img-thumbnail"></td>
-                                            <td>Nike air max 2099</td>
-                                            <td>₹4,099</td>
-                                            <td>1246</td>
-                                            <td>25</td>
-                                            <td><span class="status-badge status-info">Restock</span></td>
-                                            <td>
-                                                <a href="#" class="btn btn-sm"><i class="fa-solid fa-edit"></i></a>
-                                                <a href="#" class="btn btn-sm"><i class="fa-solid fa-trash"></i></a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>#12598</td>
+                                                <td>John Doe</td>
+                                                <td>test@gmail</td>
+                                                <td>1234567890</td>
+                                                <td>24 Nov, 2024 3:59 PM</td>
+                                                <td class="d-flex">
+                                                    <a href="#" class="btn btn-sm"><i class="fa-solid fa-edit"></i></a>
+                                                    <a href="#" class="btn btn-sm"><i class="fa-solid fa-trash"></i></a>
+                                                    <div class="dropdown">
+                                                        <a class="nav-link px-3 pt-1 pb-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item py-2" href="#">Block</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
+                                
                             </div>
                         </div>
+                         <!-- pagination -->
+                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                            <div>
+                              <p class="mt-4 mt-sm-4 mt-md-4 mt-lg-1 text-center text-md-start">Showing 1 - 20 of 121</p>
+                            </div>
+                            <ul class="pagination">
+                              <li><a href="#" class="pagination-link disabled" tabindex="-1">&lt;</a></li>
+                              <li><a href="#" class="pagination-link active">1</a></li>
+                              <li><a href="#" class="pagination-link">2</a></li>
+                              <li><a href="#" class="pagination-link">3</a></li>
+                              <li><a href="#" class="pagination-link">4</a></li>
+                              <li><a href="#" class="pagination-link">&gt;</a></li>
+                            </ul>
+                        </div>
+                        <!-- end pagination -->
                     </div>
                 </div>
            </div>

@@ -12,7 +12,7 @@
 	<meta property="og:description" content="Ecom  Admin  Bootstrap 5 Template" />
 	<meta property="og:image" content="#" />
 	<meta name="format-detection" content="telephone=no">
-    <title>Product List</title>
+    <title>Invoice</title>
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="./assets/icons/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="./assets/icons/fontawesome/css/brands.min.css" rel="stylesheet">
@@ -54,17 +54,17 @@
                                 <li><a href="category-list.html" class="submenu-link">List</a></li>
                             </ul>
                         </li>
-                        <li><a href="#" class="text-black sidebar-link submenu-parent active"><i class="fa-brands fa-microsoft"></i><p>Products <i class="fa-solid fa-angle-down right-icon"></i></p></a>
-                            <ul class="sidebar-submenu open">
+                        <li><a href="#" class="text-black sidebar-link submenu-parent"><i class="fa-brands fa-microsoft"></i><p>Products <i class="fa-solid fa-angle-down right-icon"></i></p></a>
+                            <ul class="sidebar-submenu">
                                 <li><a href="product-add.html" class="submenu-link">Add</a></li>
-                                <li><a href="product-list.html" class="submenu-link active">List</a></li>
+                                <li><a href="product-list.html" class="submenu-link">List</a></li>
                             </ul>
                         </li>
-                        <li><a href="#" class="text-black sidebar-link submenu-parent"><i class="fa-solid fa-bucket"></i><p>Order <i class="fa-solid fa-angle-down right-icon"></i></p></a>
-                            <ul class="sidebar-submenu">
+                        <li><a href="#" class="text-black sidebar-link submenu-parent active"><i class="fa-solid fa-bucket"></i><p>Order <i class="fa-solid fa-angle-down right-icon"></i></p></a>
+                            <ul class="sidebar-submenu open">
                                 <li><a href="order-list.html" class="submenu-link">List</a></li>
                                 <li><a href="order-details.html" class="submenu-link">Details</a></li>
-                                <li><a href="invoice.html" class="submenu-link">Invoice</a></li>
+                                <li><a href="invoice.html" class="submenu-link active">Invoice</a></li>
                             </ul>
                         </li>
                         <li><a href="user-list.html" class="text-black sidebar-link"><i class="fa-regular fa-user"></i><p>Customers</p></a></li>
@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="col-6 col-lg-6 d-flex">
                             <button class="menu-toggle btn btn-lg text-white d-block d-lg-none "><i class="fa-solid fa-bars"></i></button>
-                            <h1 class="header-title d-none d-lg-block ">Product</h1>
+                            <h1 class="header-title d-none d-lg-block ">Invoice</h1>
                         </div>
                         <div class="col-6 col-lg-6 d-flex justify-content-end">
                             <div>
@@ -184,128 +184,118 @@
                 </div>
             </div>
             <div class="main-content">
-                <div class="extra-header"></div>
-                <div class="card-service-section px-0 px-md-0 px-lg-3">
-                    <div class="container-fluid">
-                        <div class="d-flex justify-content-between align-items-center bg-teal">
-                            <!-- Import and Export Buttons -->
-                            <div class="d-flex gap-2">
-                              <button class="btn btn-light d-flex align-items-center gap-2">
-                                <i class="fa-solid fa-cloud-arrow-up"></i> Import
-                              </button>
-                              <button class="btn btn-light d-flex align-items-center gap-2">
-                                <i class="fa-solid fa-cloud-arrow-down"></i> Export
-                              </button>
-                            </div>
-                            <!-- Search Input -->
-                            <div class="search-box align-items-center d-none d-sm-none d-md-flex d-lg-flex">
-                              <i class="fas fa-search text-light"></i>
-                              <input
-                                type="text"
-                                class="form-control border-0 bg-transparent text-light"
-                                placeholder="Search product"
-                              />
-                            </div>
-                            <!-- Add Product Button -->
-                            <a href="product-add.html" class="btn btn-light d-flex align-items-center gap-2"><i class="fas fa-plus"></i> Add Product</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="product-section px-0 px-md-0 px-lg-3">
                     <div class="container mt-5">
-                        <div class="card shadow-sm border-0 border-radius-12">
+                        <div class="card shadow-sm border-0 border-radius-12" id="invoice-section">
                             <div class="card-body p-4">
-                                <div class="row align-items-center mb-3">
-                                    <!-- Title -->
-                                    <div class="col-8 col-md-auto mb-0 mb-md-0 d-flex">
-                                        <h5 class="fw-bold text-start text-md-start">Products List</h5>
-                                        <button class="btn  bg-disabled d-flex align-items-center ms-4">
-                                            <i class="fas fa-trash"></i> <span class="ms-2">Delete</span>
-                                        </button>
-                                    </div>
-                                    <!-- Filters and Sort -->
-                                    <div class="col-4 col-md d-flex justify-content-end justify-content-md-end flex-wrap gap-2">
-                                        <!-- Filter Dropdown -->
-                                        <div class="dropdown">
-                                            <a class="nav-link custom-bg-primary text-white rounded px-3 py-2" href="#" id="FilterMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Filter By <i class="fas fa-filter"></i>
-                                            </a>
-                                            <ul class="dropdown-menu" aria-labelledby="FilterMenuLink">
-                                                <li><a class="dropdown-item py-2" href="#">In Stock</a></li>
-                                                <li><a class="dropdown-item py-2" href="#">Out of Stock</a></li>
-                                            </ul>
+                                <div class="row justify-content-center">
+                                    <div class="col-12 col-lg-12">
+                                      <div class="row gy-3 mb-3">
+                                        <div class="col-6">
+                                          <h2 class="text-uppercase text-endx m-0">Invoice</h2>
                                         </div>
+                                        <div class="col-6">
+                                          <a class="d-block text-end" href="#!">
+                                            <img src="#" class="img-fluid" alt="Logo" width="135" height="44">
+                                          </a>
+                                        </div>
+                                        <div class="col-12">
+                                          <h4>From</h4>
+                                          <address>
+                                            <strong>TemplateRise</strong><br>
+                                            1234 Elm Street<br>
+                                            San Francisco, California, 94101<br>
+                                            United States<br>
+                                            Phone: (415) 555-1234<br>
+                                            Email: contact@domain.com
+                                          </address>
+                                        </div>
+                                      </div>
+                                      <div class="row mb-3">
+                                        <div class="col-12 col-sm-6 col-md-8">
+                                          <h4>Bill To</h4>
+                                          <address>
+                                            <strong>Jordan Mitchell</strong><br>
+                                            4321 Maple Avenue<br>
+                                            Denver, Colorado, 80202<br>
+                                            United States<br>
+                                            Phone: (303) 555-6789<br>
+                                            Email: jmitchell@company.com
+                                          </address>
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-md-4">
+                                          <h4 class="row">
+                                            <span class="col-6">Invoice #</span>
+                                            <span class="col-6 text-sm-end">INT-001</span>
+                                          </h4>
+                                          <div class="row">
+                                            <span class="col-6">Account</span>
+                                            <span class="col-6 text-sm-end">786-54984</span>
+                                            <span class="col-6">Order ID</span>
+                                            <span class="col-6 text-sm-end">#9742</span>
+                                            <span class="col-6">Invoice Date</span>
+                                            <span class="col-6 text-sm-end">12/10/2025</span>
+                                            <span class="col-6">Due Date</span>
+                                            <span class="col-6 text-sm-end">18/12/2025</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="row mb-3">
+                                        <div class="col-12">
+                                          <div class="table-responsive">
+                                            <table class="table table-striped">
+                                              <thead>
+                                                <tr>
+                                                  <th scope="col" class="text-uppercase">Qty</th>
+                                                  <th scope="col" class="text-uppercase">Product</th>
+                                                  <th scope="col" class="text-uppercase text-end">Unit Price</th>
+                                                  <th scope="col" class="text-uppercase text-end">Amount</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody class="table-group-divider">
+                                                <tr>
+                                                  <th scope="row">2</th>
+                                                  <td>Blue denim jacket</td>
+                                                  <td class="text-end">75</td>
+                                                  <td class="text-end">150</td>
+                                                </tr>
+                                                <tr>
+                                                  <th scope="row">1</th>
+                                                  <td>Blue denim jacket</td>
+                                                  <td class="text-end">29</td>
+                                                  <td class="text-end">29</td>
+                                                </tr>
+                                                <tr>
+                                                  <td colspan="3" class="text-end">Subtotal</td>
+                                                  <td class="text-end">362</td>
+                                                </tr>
+                                                <tr>
+                                                  <td colspan="3" class="text-end">VAT (5%)</td>
+                                                  <td class="text-end">18.1</td>
+                                                </tr>
+                                                <tr>
+                                                  <td colspan="3" class="text-end">Shipping</td>
+                                                  <td class="text-end">15</td>
+                                                </tr>
+                                                <tr>
+                                                  <th scope="row" colspan="3" class="text-uppercase text-end">Total</th>
+                                                  <td class="text-end">$495.1</td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-12 text-end">
+                                            <a  href="javascript:void(0)" class="btn text-primary border-color hover-bg-primary me-2" id="printInvoice"><i class="fa-solid fa-print"></i> Print</a>
+                                            <button type="submit" class="btn custom-bg-primary text-white btn-hover"><i class="fa-solid fa-download"></i> Download</button>
+                                        </div>
+                                      </div>
                                     </div>
-                                </div>                            
-                                <div class="table-responsive">
-                                    <table class="table align-middle">
-                                      <thead>
-                                        <tr>
-                                          <th scope="col" class="py-3">
-                                            <input type="checkbox" id="select-all" class="custom-checkbox">
-                                          </th>
-                                          <th scope="col" class="py-3">Product ID</th>
-                                          <th scope="col" class="py-3">Image</th>
-                                          <th scope="col" class="py-3">Product Name</th>
-                                          <th scope="col" class="py-3">Category</th>
-                                          <th scope="col" class="py-3">Price</th>
-                                          <th scope="col" class="py-3">Stock</th>
-                                          <th scope="col" class="py-3">SKU</th>
-                                          <th scope="col" class="py-3">Status</th>
-                                          <th scope="col" class="py-3">Actions</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td><input type="checkbox" class="custom-checkbox row-checkbox"></td>
-                                          <td>#12598</td>
-                                          <td><img src="./assets/images/p1.jfif" alt="Product Image" class="p-img-thumbnail"></td>
-                                          <td>Off-white shoulder wide...</td>
-                                          <td>Women</td>
-                                          <td>₹4,099</td>
-                                          <td>25</td>
-                                          <td>123456</td>
-                                          <td><span class="status-badge status-success">In Stock</span></td>
-                                          <td>
-                                            <a href="#" class="btn btn-sm"><i class="fa-solid fa-edit"></i></a>
-                                            <a href="#" class="btn btn-sm"><i class="fa-solid fa-trash"></i></a>
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td><input type="checkbox" class="custom-checkbox row-checkbox"></td>
-                                          <td>#12599</td>
-                                          <td><img src="./assets/images/p1.jfif" alt="Product Image" class="p-img-thumbnail"></td>
-                                          <td>Blue denim jacket</td>
-                                          <td>Men</td>
-                                          <td>₹3,299</td>
-                                          <td>15</td>
-                                          <td>654321</td>
-                                          <td><span class="status-badge status-danger">Out of Stock</span></td>
-                                          <td>
-                                            <a href="#" class="btn btn-sm"><i class="fa-solid fa-edit"></i></a>
-                                            <a href="#" class="btn btn-sm"><i class="fa-solid fa-trash"></i></a>
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                </div>
+                                  </div>
                             </div>
                         </div>
-                         <!-- pagination -->
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                            <div>
-                              <p class="mt-4 mt-sm-4 mt-md-4 mt-lg-1 text-center text-md-start">Showing 1 - 20 of 121</p>
-                            </div>
-                            <ul class="pagination">
-                              <li><a href="#" class="pagination-link disabled" tabindex="-1">&lt;</a></li>
-                              <li><a href="#" class="pagination-link active">1</a></li>
-                              <li><a href="#" class="pagination-link">2</a></li>
-                              <li><a href="#" class="pagination-link">3</a></li>
-                              <li><a href="#" class="pagination-link">4</a></li>
-                              <li><a href="#" class="pagination-link">&gt;</a></li>
-                            </ul>
-                        </div>
-                        <!-- end pagination -->
                     </div>
                 </div>
            </div>
