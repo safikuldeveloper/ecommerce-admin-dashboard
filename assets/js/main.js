@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const variantsTable = document.getElementById("variants-table");
   const addVariantButton = document.getElementById("add-variant");
   const printInvoicetButton = document.getElementById("printInvoice");
+  const browsedatatable = document.getElementById("datatable");
 
+  
   
   
   // Preloader for first-time visitors
@@ -35,13 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
 //       mainWrapper.style.display = "block";
 //   }
 
-setTimeout(() => {
+
+if(preloader){
+  setTimeout(() => {
     preloader.style.display = "none";
     mainWrapper.style.display = "block";
-}, 100)
+  }, 100)
+}
 
   // Submenu toggle
-  submenuParents.forEach((parent) => {
+  if (submenuParents) {
+    submenuParents.forEach((parent) => {
       parent.addEventListener("click", (e) => {
           e.preventDefault();
           const submenu = parent.nextElementSibling;
@@ -52,12 +58,15 @@ setTimeout(() => {
           rightIcon.classList.toggle("rotate");
       });
   });
+  }
+  
 
   // Sidebar collapse logic
   let isCollapsedManually = false;
   let collapseClickCount = 0;
 
-  collapseSidebar.addEventListener("click", () => {
+  if (collapseSidebar) {
+    collapseSidebar.addEventListener("click", () => {
       collapseClickCount++;
       if (collapseClickCount === 2) {
           collapseClickCount = 0;
@@ -72,15 +81,17 @@ setTimeout(() => {
           collapseMainContent.style.marginLeft = "5rem"; 
       }
   });
+  }
+  
 
-  sidebar.addEventListener("mouseenter", () => {
+  if(sidebar){
+    sidebar.addEventListener("mouseenter", () => {
       if (sidebar.classList.contains("collapsed")) {
           sidebar.classList.remove("collapsed");
           icon.style.transform = "rotate(0deg)";
           collapseMainContent.style.marginLeft = "18rem"; 
       }
   });
-
   sidebar.addEventListener("mouseleave", () => {
       if (!sidebar.classList.contains("collapsed") && isCollapsedManually) {
           sidebar.classList.add("collapsed");
@@ -88,6 +99,9 @@ setTimeout(() => {
           collapseMainContent.style.marginLeft = "5rem"; 
       }
   });
+  }
+
+
 
 
 
@@ -108,26 +122,31 @@ document.body.appendChild(overlay);
 let mobileOverlayVisible = false;
 
 // Handle sidebar toggle
-menuToggle.addEventListener("click", () => {
-  if (!mobileOverlayVisible) {
-    // Open sidebar
-    sidebar.style.width = "18rem";
-    sidebar.style.display = "block";
-    sidebar.style.zIndex = "9999";
-    overlay.style.display = "block";
-    mobileOverlayVisible = true;
-  } else {
-    // Close sidebar
-    closeSidebar();
-  }
-});
+if(menuToggle){
+  menuToggle.addEventListener("click", () => {
+    if (!mobileOverlayVisible) {
+      // Open sidebar
+      sidebar.style.width = "18rem";
+      sidebar.style.display = "block";
+      sidebar.style.zIndex = "9999";
+      overlay.style.display = "block";
+      mobileOverlayVisible = true;
+    } else {
+      // Close sidebar
+      closeSidebar();
+    }
+  });
+}
+
+if(overlay){
+  overlay.addEventListener("click", () => {
+    if (mobileOverlayVisible) {
+      closeSidebar();
+    }
+  });
+}
 
 
-overlay.addEventListener("click", () => {
-  if (mobileOverlayVisible) {
-    closeSidebar();
-  }
-});
 
 // Function to close the sidebar
 function closeSidebar() {
@@ -389,53 +408,78 @@ if(inputTags){
   tagify.DOM.input.blur();
 }
 
+if(printInvoicetButton){
+  printInvoicetButton.addEventListener("click", (e) => {
 
+    var printContent = document.getElementById('invoice-section');
+    var printDiv = document.createElement('div');
+    printDiv.id = 'printDiv';
+    printDiv.innerHTML = printContent.innerHTML;
+    document.body.appendChild(printDiv);
+    var style = document.createElement('style');
+    style.innerHTML = `
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printDiv, #printDiv * {
+                visibility: visible;
+            }
+            #printDiv {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 0;
+            }
+            .container, .card, .card-body {
+                page-break-inside: avoid;
+            }
+            table {
+                width: 100%;
+                page-break-inside: auto;
+            }
+            .table th, .table td {
+                white-space: nowrap;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    window.print();
+    document.body.removeChild(printDiv);
+    document.head.removeChild(style);
+    });
+    
+}
 
-printInvoicetButton.addEventListener("click", (e) => {
+$('.toggle-password').click(function() {
+  var input = $(this).siblings('.input-password');
+  var isPassword = input.attr('type') === 'password';
 
-var printContent = document.getElementById('invoice-section');
-var printDiv = document.createElement('div');
-printDiv.id = 'printDiv';
-printDiv.innerHTML = printContent.innerHTML;
-document.body.appendChild(printDiv);
-var style = document.createElement('style');
-style.innerHTML = `
-    @media print {
-        body * {
-            visibility: hidden;
-        }
-        #printDiv, #printDiv * {
-            visibility: visible;
-        }
-        #printDiv {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            margin: 0;
-            padding: 0;
-        }
-        .container, .card, .card-body {
-            page-break-inside: avoid;
-        }
-        table {
-            width: 100%;
-            page-break-inside: auto;
-        }
-        .table th, .table td {
-            white-space: nowrap;
-        }
-    }
-`;
-document.head.appendChild(style);
-window.print();
-document.body.removeChild(printDiv);
-document.head.removeChild(style);
+  // Toggle input type
+  input.attr('type', isPassword ? 'text' : 'password');
+
+  // Toggle icon based on input type
+  var icon = isPassword 
+      ? `<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+          </svg>` 
+      : `<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+          </svg>`;
+  
+  $(this).html(icon);
 });
 
 
+if(browsedatatable){
+  new DataTable(browsedatatable);
+}
 
 });
 

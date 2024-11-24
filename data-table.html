@@ -12,11 +12,12 @@
 	<meta property="og:description" content="Ecom  Admin  Bootstrap 5 Template" />
 	<meta property="og:image" content="#" />
 	<meta name="format-detection" content="telephone=no">
-    <title>User List</title>
+    <title>Data Table</title>
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="./assets/icons/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="./assets/icons/fontawesome/css/brands.min.css" rel="stylesheet">
     <link href="./assets/icons/fontawesome/css/solid.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/plugin/datatable/datatables.min.css">
     <link href="./assets/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -67,7 +68,7 @@
                                 <li><a href="invoice.html" class="submenu-link">Invoice</a></li>
                             </ul>
                         </li>
-                        <li><a href="user-list.html" class="text-black sidebar-link active"><i class="fa-regular fa-user"></i><p>Customers</p></a></li>
+                        <li><a href="user-list.html" class="text-black sidebar-link"><i class="fa-regular fa-user"></i><p>Customers</p></a></li>
                         <li><a href="#" class="text-black sidebar-link submenu-parent"><i class="fa-solid fa-pager"></i><p>Page <i class="fa-solid fa-angle-down right-icon"></i></p></a>
                             <ul class="sidebar-submenu">
                                 <li><a href="login.html" class="submenu-link">Login</a></li>
@@ -76,10 +77,10 @@
                             </ul>
                         </li>
                         <li class="sidebar-label">Other</li>
-                        <li><a href="#" class="text-black sidebar-link submenu-parent"><i class="fa-solid fa-web-awesome"></i><p>Components <i class="fa-solid fa-angle-down right-icon"></i></p></a>
-                            <ul class="sidebar-submenu">
+                        <li><a href="#" class="text-black sidebar-link submenu-parent active"><i class="fa-solid fa-web-awesome"></i><p>Components <i class="fa-solid fa-angle-down right-icon"></i></p></a>
+                            <ul class="sidebar-submenu open">
                                 <li><a href="basic-table.html" class="submenu-link">Basic table</a></li>
-                                <li><a href="data-table.html" class="submenu-link">Datatable</a></li>
+                                <li><a href="data-table.html" class="submenu-link active">Datatable</a></li>
                             </ul>
                         </li>
                         <li><a href="#" class="text-black sidebar-link"><i class="fa-regular fa-message"></i><p>Message</p></a></li>
@@ -97,7 +98,7 @@
                     <div class="row">
                         <div class="col-6 col-lg-6 d-flex">
                             <button class="menu-toggle btn btn-lg text-white d-block d-lg-none "><i class="fa-solid fa-bars"></i></button>
-                            <h1 class="header-title d-none d-lg-block ">Order</h1>
+                            <h1 class="header-title d-none d-lg-block">DataTable</h1>
                         </div>
                         <div class="col-6 col-lg-6 d-flex justify-content-end">
                             <div>
@@ -196,28 +197,6 @@
                 </div>
             </div>
             <div class="main-content">
-                <div class="extra-header"></div>
-                <div class="card-service-section px-0 px-md-0 px-lg-3">
-                    <div class="container-fluid">
-                        <div class="d-flex justify-content-between align-items-center bg-teal">
-                            <!-- Import Buttons -->
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-light d-flex align-items-center gap-2">
-                                  <i class="fa-solid fa-cloud-arrow-up"></i> Import
-                                </button>
-                              </div>
-                            <!-- Search Input -->
-                            <div class="search-box align-items-center  d-flex">
-                              <i class="fas fa-search text-light"></i>
-                              <input
-                                type="text"
-                                class="form-control border-0 bg-transparent text-light"
-                                placeholder="Search user"
-                              />
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="product-section px-0 px-md-0 px-lg-3">
                     <div class="container mt-5">
                         <div class="card shadow-sm border-0 border-radius-12">
@@ -225,11 +204,11 @@
                                 <div class="row align-items-center mb-3">
                                     <!-- Title -->
                                     <div class="col-12 col-md-auto mb-0 mb-md-0 d-flex">
-                                        <h5 class="fw-bold text-start text-md-start">User List</h5>
+                                        <h5 class="fw-bold text-start text-md-start">DataTable</h5>
                                     </div>
                                 </div>                            
                                 <div class="table-responsive">
-                                    <table class="table align-middle">
+                                    <table class="table table-striped align-middle" id="datatable">
                                         <thead>
                                             <tr>
                                                 <th scope="col" class="py-3">ID</th>
@@ -247,14 +226,33 @@
                                                 <td>test@gmail</td>
                                                 <td>1234567890</td>
                                                 <td>24 Nov, 2024 3:59 PM</td>
-                                                <td class="d-flex">
-                                                    <a href="#" class="btn btn-sm"><i class="fa-solid fa-edit"></i></a>
-                                                    <a href="#" class="btn btn-sm"><i class="fa-solid fa-trash"></i></a>
+                                                <td>
                                                     <div class="dropdown">
                                                         <a class="nav-link px-3 pt-1 pb-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                                         </a>
                                                         <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item py-2" href="#">Edit</a></li>
+                                                            <li><a class="dropdown-item py-2" href="#">Delete</a></li>
+                                                            <li><a class="dropdown-item py-2" href="#">Block</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#12598</td>
+                                                <td>John Doe</td>
+                                                <td>test@gmail</td>
+                                                <td>1234567890</td>
+                                                <td>24 Nov, 2024 3:59 PM</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <a class="nav-link px-3 pt-1 pb-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item py-2" href="#">Edit</a></li>
+                                                            <li><a class="dropdown-item py-2" href="#">Delete</a></li>
                                                             <li><a class="dropdown-item py-2" href="#">Block</a></li>
                                                         </ul>
                                                     </div>
@@ -266,21 +264,6 @@
                                 
                             </div>
                         </div>
-                         <!-- pagination -->
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                            <div>
-                              <p class="mt-4 mt-sm-4 mt-md-4 mt-lg-1 text-center text-md-start">Showing 1 - 20 of 121</p>
-                            </div>
-                            <ul class="pagination">
-                              <li><a href="#" class="pagination-link disabled" tabindex="-1">&lt;</a></li>
-                              <li><a href="#" class="pagination-link active">1</a></li>
-                              <li><a href="#" class="pagination-link">2</a></li>
-                              <li><a href="#" class="pagination-link">3</a></li>
-                              <li><a href="#" class="pagination-link">4</a></li>
-                              <li><a href="#" class="pagination-link">&gt;</a></li>
-                            </ul>
-                        </div>
-                        <!-- end pagination -->
                     </div>
                 </div>
            </div>
@@ -295,6 +278,7 @@
     <script  src="./assets/js/jquery-3.6.0.min.js"></script>
     <script  src="./assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./assets/plugin/datatable/datatables.min.js"></script>
     <script  src="./assets/js/chart.js"></script>
     <script  src="./assets/js/main.js"></script>
 </body>
