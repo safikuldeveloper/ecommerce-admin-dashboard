@@ -276,7 +276,7 @@ h1, h2, h3 {
    background: var(--secondary);
    margin-left: 18rem;
    transition: width 0.3s ease;
-   overflow-x: hidden;
+   /* overflow-x: hidden; */
 }
 
 
