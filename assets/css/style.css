@@ -276,7 +276,7 @@ h1, h2, h3 {
    background: var(--secondary);
    margin-left: 18rem;
    transition: width 0.3s ease;
-   /* overflow-x: hidden; */
+   overflow-x: hidden;
 }
 
 
@@ -297,9 +297,10 @@ h1, h2, h3 {
 .header {
   background: var(--primary);
   height: 7rem;
-  position:sticky;
+  position: fixed;
+  left: 18rem;
   top: 0;
-  width: 100%;
+  width: calc(100% - 18rem);
   z-index: 999;
 }
 
@@ -570,6 +571,12 @@ h1, h2, h3 {
   /* background-color: #326d6c; */
 }
 
+
+.main-content {
+  margin-top: 7rem;
+  min-height: 32.5rem;
+}
+
 .search-box {
   background-color: #234e4d;
   padding: 0.4rem 1rem;
@@ -585,10 +592,15 @@ h1, h2, h3 {
 
 }
 
-@media (max-width: 768px) {
-.header {
-    height: 6rem;
-}
+@media (max-width: 993px) {
+  .header {
+      left: 0;
+      width: 100% !important;
+      height: 5rem;
+  }
+  .main-content {
+    margin-top: 5rem;
+  }
 }
 
 .search-box input {
@@ -621,9 +633,7 @@ h1, h2, h3 {
 }
 
 
-.main-content {
-  min-height: 32.5rem;
-}
+
 
 .bg-disabled {
   background: #D8D8D8;
