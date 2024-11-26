@@ -420,7 +420,7 @@ h1, h2, h3 {
 }
 
 .card-service-section {
-  margin-top: -60px;
+  margin-top: -5rem;
 }
 
 .product-section table thead th {
@@ -912,6 +912,14 @@ h1, h2, h3 {
 
 .mt-50 {
   margin-top: 3.5rem;
+}
+
+.mt-80 {
+  margin-top: 5rem;
+}
+
+.mt-150 {
+  margin-top: 9.5rem;
 }
 
 .custom-bg-secondary {
