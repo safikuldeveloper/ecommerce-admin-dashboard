@@ -272,6 +272,13 @@ h1, h2, h3 {
   display: none;
 }
 
+.lg-logo img, .sm-logo img {
+  mask-image: none;
+  -webkit-mask-image: none;
+  mix-blend-mode: multiply;
+}
+
+
 .sidebar.collapsed .sm-logo {
   display: block;
 }
