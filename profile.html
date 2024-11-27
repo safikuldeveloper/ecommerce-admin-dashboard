@@ -47,7 +47,7 @@
                <div class="sidebar-body custom-scrollbar">
                     <ul class="sidebar-menu">
                         <li class="sidebar-label">Menu</li>
-                        <li><a href="index.html" class="text-black sidebar-link"><i class="fa-solid fa-house"></i><p>Overview</p></a></li>
+                        <li><a href="index.html" class="text-black sidebar-link"><i class="fa-solid fa-house"></i><p>Dashboard</p></a></li>
                         <li><a href="#" class="text-black sidebar-link submenu-parent"><i class="fa-solid fa-list"></i><p>Category <i class="fa-solid fa-angle-down right-icon"></i></p></a>
                             <ul class="sidebar-submenu">
                                 <li><a href="category-add.html" class="submenu-link">Add</a></li>
@@ -229,7 +229,7 @@
                                 <div class="tab-content mt-4">
                                     <div class="tab-pane fade show active" id="account" role="tabpanel"
                                     aria-labelledby="account-tab">
-                                    <h5 class="h5 mb-4">Account Info</h5>
+                                    <h5 class="h5 mb-5">Account Info</h5>
                                     <form>
                                         <div class="mb-3">
                                         <label for="firstName" class="form-label">First Name</label>
@@ -245,52 +245,30 @@
                                     </div>
                                     <div class="tab-pane fade" id="profile" role="tabpanel"
                                     aria-labelledby="profile-tab">
-                                    <h5 class="h5 mb-4">Change profile image</h5>
+                                    <h5 class="h5 mb-5">Change profile image</h5>
                                     <form>
-                                        <div class="file-upload-container">
-                                            <div id="dropzone" class="dropzone">
-                                            <div class="icon">
-                                                <svg width="90" height="90" viewBox="0 0 105 135" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g clip-path="url(#clip0_12_2806)">
-                                                    <path d="M53.498 65.0693L15.9733 66.6661" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M53.8972 65.0693L103.398 69.4605" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M103.797 69.4607L93.8171 115.768" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M93.8171 115.768L52.6996 122.953" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M52.6996 122.554V73.4526" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M52.6996 73.8519L103.398 69.8599" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M52.6996 73.8518L15.9733 66.6663" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M15.1749 66.6663L17.5701 103.393" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M17.5701 103.393L52.6996 122.953" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M53.0988 65.0693V73.0533" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M82.5997 84.2736L74.5341 84.7725C72.6636 84.8882 71.2411 86.4982 71.3568 88.3687L71.4306 89.5624C71.5463 91.4328 73.1564 92.8553 75.0268 92.7396L83.0924 92.2408C84.9629 92.1251 86.3854 90.515 86.2697 88.6446L86.1958 87.4509C86.0802 85.5804 84.4701 84.1579 82.5997 84.2736Z" stroke="black" stroke-width="1.1976"/>
-                                                    <path d="M1.20294 11.9761C8.24038 23.1729 27.476 44.381 48.1192 39.6388L77.0507 18.299" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M1.20294 11.9759L33.9372 1.19751" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M33.9373 1.19751C40.0777 6.78629 57.2968 17.9639 77.0507 17.9639" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M19.5661 17.5646C22.4048 16.8993 28.934 14.7703 32.3405 11.5767" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M27.9493 24.7503C29.7235 24.3511 33.8042 22.8342 35.9333 19.96" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M37.53 29.94C39.7922 29.5408 45.7535 27.7045 48.3084 21.9561" stroke="black" stroke-width="1.99599" stroke-linecap="round"/>
-                                                    <path d="M52.4126 133.332L16.5721 103.991L52.5 123.951L94.8151 116.566L98.8071 117.165L52.4126 133.332Z" fill="#21325B" fill-opacity="0.3"/>
-                                                    </g>
-                                                    <defs>
-                                                    <clipPath id="clip0_12_2806">
-                                                    <rect width="104.989" height="134.53" fill="white" transform="translate(0.00537109)"/>
-                                                    </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </div>
-                                            <p>Drag and drop your profile photo here</p>
-                                            <p>or</p>
-                                            <a href="javascript:void(0)" id="browseButton">Browse photo</a>
-                                            <input id="fileInput" type="file" hidden />
-                                            </div>
-                                            <div id="preview" class="preview-grid"></div>
+                                        <div class="profile-pic-wrapper">
+                                            <div class="pic-holder">
+                                                <!-- uploaded pic shown here -->
+                                                <img id="profilePic" class="pic" src="./assets/images/profile.png">
+                                                <Input class="uploadProfileInput" type="file" name="profile_pic" id="newProfilePhoto" accept="image/*" style="opacity: 0;" />
+                                                <label for="newProfilePhoto" class="upload-file-block">
+                                                  <div class="text-center">
+                                                    <div class="mb-2">
+                                                      <i class="fa fa-camera fa-2x"></i>
+                                                    </div>
+                                                    <div class="text-uppercase">
+                                                      Update <br /> Profile Photo
+                                                    </div>
+                                                  </div>
+                                                </label>
+                                              </div>
                                         </div>
-                                        <button type="submit" class="btn custom-bg-primary text-white btn-hover">Save</button>
                                     </form>    
                                     </div>
                                     <div class="tab-pane fade" id="password" role="tabpanel"
                                     aria-labelledby="password-tab">
-                                    <h5 class="h5 mb-4">Change Password</h5>
+                                    <h5 class="h5 mb-5">Change Password</h5>
                                     <form>
                                         <div class="mb-3">
                                         <label for="OldPassword" class="form-label">Old Password</label>

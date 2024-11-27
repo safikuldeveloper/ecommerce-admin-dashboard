@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const addVariantButton = document.getElementById("add-variant");
   const printInvoicetButton = document.getElementById("printInvoice");
   const browsedatatable = document.getElementById("datatable");
+  const header = document.querySelector(".header");
 
-  
-  
+
   
   // Preloader for first-time visitors
 //   const isFirstVisit = !localStorage.getItem("visited");
@@ -64,47 +64,54 @@ if(preloader){
   // Sidebar collapse logic
   let isCollapsedManually = false;
   let collapseClickCount = 0;
-
+  const sidebarWidthExpanded = "18rem";
+  const sidebarWidthCollapsed = "5rem";
+  
   if (collapseSidebar) {
     collapseSidebar.addEventListener("click", () => {
       collapseClickCount++;
-      if (collapseClickCount === 2) {
-          collapseClickCount = 0;
-          isCollapsedManually = false;
-          sidebar.classList.remove("collapsed");
-          icon.style.transform = "rotate(0deg)";
-          collapseMainContent.style.marginLeft = "18rem"; 
+      const isDoubleClick = collapseClickCount === 2;
+  
+      if (isDoubleClick) {
+        collapseClickCount = 0;
+        isCollapsedManually = false;
+        sidebar.classList.remove("collapsed");
+        icon.style.transform = "rotate(0deg)";
+        collapseMainContent.style.marginLeft = sidebarWidthExpanded;
+        header.style.width = `calc(100% - ${sidebarWidthExpanded})`;
+        header.style.left = sidebarWidthExpanded;
       } else {
-          isCollapsedManually = true;
-          sidebar.classList.add("collapsed");
-          icon.style.transform = "rotate(180deg)";
-          collapseMainContent.style.marginLeft = "5rem"; 
+        isCollapsedManually = true;
+        sidebar.classList.add("collapsed");
+        icon.style.transform = "rotate(180deg)";
+        collapseMainContent.style.marginLeft = sidebarWidthCollapsed;
+        header.style.width = `calc(100% - ${sidebarWidthCollapsed})`;
+        header.style.left = sidebarWidthCollapsed;
       }
-  });
+    });
   }
   
-
+  
   if(sidebar){
     sidebar.addEventListener("mouseenter", () => {
       if (sidebar.classList.contains("collapsed")) {
           sidebar.classList.remove("collapsed");
           icon.style.transform = "rotate(0deg)";
-          collapseMainContent.style.marginLeft = "18rem"; 
+          collapseMainContent.style.marginLeft = sidebarWidthExpanded;
+          header.style.width = `calc(100% - ${sidebarWidthExpanded})`;
+          header.style.left = sidebarWidthExpanded; 
       }
   });
   sidebar.addEventListener("mouseleave", () => {
       if (!sidebar.classList.contains("collapsed") && isCollapsedManually) {
           sidebar.classList.add("collapsed");
           icon.style.transform = "rotate(180deg)";
-          collapseMainContent.style.marginLeft = "5rem"; 
+          collapseMainContent.style.marginLeft = sidebarWidthCollapsed;
+          header.style.width = `calc(100% - ${sidebarWidthCollapsed})`;
+          header.style.left = sidebarWidthCollapsed; 
       }
   });
   }
-
-
-
-
-
 
 
 // Create overlay element
@@ -480,6 +487,97 @@ $('.toggle-password').click(function() {
 if(browsedatatable){
   new DataTable(browsedatatable);
 }
+
+
+
+//// Profile Settings
+
+document.addEventListener("change", (event) => {
+  if (!event.target.classList.contains("uploadProfileInput")) return;
+
+  const triggerInput = event.target;
+  const holder = triggerInput.closest(".pic-holder");
+  const wrapper = triggerInput.closest(".profile-pic-wrapper");
+  const currentImg = holder.querySelector(".pic").src;
+
+  wrapper.querySelectorAll('[role="alert"]').forEach((alert) => alert.remove());
+
+  triggerInput.blur();
+
+  const files = triggerInput.files || [];
+  if (!files.length || !window.FileReader) return;
+
+  const file = files[0];
+  if (!/^image/.test(file.type)) {
+    showAlert(wrapper, "Please choose a valid image.", "alert-danger");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+
+  reader.onloadend = () => {
+    holder.classList.add("uploadInProgress");
+    holder.querySelector(".pic").src = reader.result;
+
+    const loader = createLoader();
+    holder.appendChild(loader);
+
+    setTimeout(() => {
+      holder.classList.remove("uploadInProgress");
+      loader.remove();
+
+      const isSuccess = Math.random() < 0.9;
+      if (isSuccess) {
+        showAlert(
+          wrapper,
+          '<i class="fa fa-check-circle text-success"></i> Profile image updated successfully',
+          "snackbar"
+        );
+        triggerInput.value = "";
+      } else {
+        holder.querySelector(".pic").src = currentImg;
+        showAlert(
+          wrapper,
+          '<i class="fa fa-times-circle text-danger"></i> There was an error while uploading! Please try again later.',
+          "snackbar"
+        );
+        triggerInput.value = "";
+      }
+    }, 1500);
+  };
+});
+
+/**
+ * Utility function to show alerts
+ * @param {HTMLElement} wrapper - The wrapper element to append the alert
+ * @param {string} message - The alert message
+ * @param {string} alertClass - The CSS class for the alert
+ */
+const showAlert = (wrapper, message, alertClass) => {
+  const alert = document.createElement("div");
+  alert.className = `${alertClass} show`;
+  alert.setAttribute("role", "alert");
+  alert.innerHTML = message;
+  wrapper.appendChild(alert);
+
+  setTimeout(() => {
+    alert.remove();
+  }, 3000);
+};
+
+/**
+ * Utility function to create a loader element
+ * @returns {HTMLDivElement} - The loader element
+ */
+const createLoader = () => {
+  const loader = document.createElement("div");
+  loader.className = "upload-loader";
+  loader.innerHTML =
+    '<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>';
+  return loader;
+};
+
 
 });
 
