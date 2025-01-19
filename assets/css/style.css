@@ -258,38 +258,6 @@ h1, h2, h3 {
   }
 
 
-.sidebar.collapsed {
-  width: 5rem; 
-}
-
-.sidebar.collapsed .sidebar-link p {
-  display: none;
-}
-
-.sidebar.collapsed .sidebar-link i {
-  text-align: center;
-  margin: 0 auto;
-}
-
-.sm-logo {
-  display: none;
-}
-
-.lg-logo img, .sm-logo img {
-  mask-image: none;
-  -webkit-mask-image: none;
-  mix-blend-mode: multiply;
-}
-
-
-.sidebar.collapsed .sm-logo {
-  display: block;
-}
-
-.sidebar.collapsed .lg-logo {
-  display: none;
-}
-
 
 .submenu-link.active{
   color: var(--primary);
@@ -1163,3 +1131,99 @@ h1, h2, h3 {
 .invoice .invoice-no { font-size: 14px; }
 .invoice .card-footer p{ font-weight: 500; font-size: 13px; }
 .bg-success-color { background-color: #fff !important;}
+
+
+
+
+.sm-logo {
+  display: none;
+}
+
+.lg-logo img, 
+.sm-logo img {
+  mask-image: none;
+  -webkit-mask-image: none;
+  mix-blend-mode: multiply;
+}
+
+/* Sidebar expanded state */
+.sidebar-visible {
+  width: 18rem;
+  display: block;
+  z-index: 9999;
+  transition: width 0.3s;
+}
+
+/* Sidebar collapsed state */
+.sidebar-collapsed {
+  width: 5rem;
+  transition: width 0.3s;
+}
+
+.sidebar.sidebar-collapsed .sidebar-link p {
+  display: none;
+}
+
+.sidebar.sidebar-collapsed .sidebar-link i {
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Collapsed sidebar state */
+.sidebar-collapsed .lg-logo {
+  display: none;
+}
+
+.sidebar-collapsed .sm-logo {
+  display: block;
+}
+
+/* Overlay visible */
+.overlay-visible {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: block;
+  transition: opacity 0.3s;
+}
+
+/* Overlay hidden */
+.overlay-hidden {
+  display: none;
+}
+
+/* Icon rotation */
+.icon-rotated {
+  transform: rotate(180deg);
+  transition: transform 0.3s;
+}
+
+/* Icon default */
+.icon-default {
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
+
+/* Header adjustments */
+.header-expanded {
+  width: calc(100% - 18rem);
+  left: 18rem;
+}
+
+.header-collapsed {
+  width: calc(100% - 5rem);
+  left: 5rem;
+}
+
+/* Collapse main content */
+.collapse-main-expanded {
+  margin-left: 18rem;
+}
+
+.collapse-main-collapsed {
+  margin-left: 5rem;
+}

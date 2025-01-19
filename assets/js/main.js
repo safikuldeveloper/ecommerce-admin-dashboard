@@ -61,91 +61,84 @@ if(preloader){
   }
   
 
-  // Sidebar collapse logic
-  let isCollapsedManually = false;
-  let collapseClickCount = 0;
-  const sidebarWidthExpanded = "18rem";
-  const sidebarWidthCollapsed = "5rem";
-  
-  if (collapseSidebar) {
-    collapseSidebar.addEventListener("click", () => {
-      collapseClickCount++;
-      const isDoubleClick = collapseClickCount === 2;
-  
-      if (isDoubleClick) {
-        collapseClickCount = 0;
-        isCollapsedManually = false;
-        sidebar.classList.remove("collapsed");
-        icon.style.transform = "rotate(0deg)";
-        collapseMainContent.style.marginLeft = sidebarWidthExpanded;
-        header.style.width = `calc(100% - ${sidebarWidthExpanded})`;
-        header.style.left = sidebarWidthExpanded;
-      } else {
-        isCollapsedManually = true;
-        sidebar.classList.add("collapsed");
-        icon.style.transform = "rotate(180deg)";
-        collapseMainContent.style.marginLeft = sidebarWidthCollapsed;
-        header.style.width = `calc(100% - ${sidebarWidthCollapsed})`;
-        header.style.left = sidebarWidthCollapsed;
-      }
-    });
-  }
-  
-  
-  if(sidebar){
-    sidebar.addEventListener("mouseenter", () => {
-      if (sidebar.classList.contains("collapsed")) {
-          sidebar.classList.remove("collapsed");
-          icon.style.transform = "rotate(0deg)";
-          collapseMainContent.style.marginLeft = sidebarWidthExpanded;
-          header.style.width = `calc(100% - ${sidebarWidthExpanded})`;
-          header.style.left = sidebarWidthExpanded; 
-      }
+let isCollapsedManually = false;
+let collapseClickCount = 0;
+
+if (collapseSidebar) {
+  collapseSidebar.addEventListener("click", () => {
+    collapseClickCount++;
+    const isDoubleClick = collapseClickCount === 2;
+
+    if (isDoubleClick) {
+      collapseClickCount = 0;
+      isCollapsedManually = false;
+      sidebar.classList.remove("sidebar-collapsed");
+      icon.classList.remove("icon-rotated");
+      collapseMainContent.classList.remove("collapse-main-collapsed");
+      collapseMainContent.classList.add("collapse-main-expanded");
+      header.classList.remove("header-collapsed");
+      header.classList.add("header-expanded");
+      icon.classList.remove('fa-arrow-right');
+      icon.classList.add('fa-bars');
+    } else {
+      isCollapsedManually = true;
+      sidebar.classList.add("sidebar-collapsed");
+      icon.classList.add("icon-rotated");
+      collapseMainContent.classList.add("collapse-main-collapsed");
+      collapseMainContent.classList.remove("collapse-main-expanded");
+      header.classList.add("header-collapsed");
+      header.classList.remove("header-expanded");
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-arrow-right');
+    }
   });
+}
+
+if (sidebar) {
+  sidebar.addEventListener("mouseenter", () => {
+    if (sidebar.classList.contains("sidebar-collapsed")) {
+      sidebar.classList.remove("sidebar-collapsed");
+      icon.classList.remove("icon-rotated");
+      collapseMainContent.classList.add("collapse-main-expanded");
+      collapseMainContent.classList.remove("collapse-main-collapsed");
+      header.classList.add("header-expanded");
+      header.classList.remove("header-collapsed");
+    }
+  });
+
   sidebar.addEventListener("mouseleave", () => {
-      if (!sidebar.classList.contains("collapsed") && isCollapsedManually) {
-          sidebar.classList.add("collapsed");
-          icon.style.transform = "rotate(180deg)";
-          collapseMainContent.style.marginLeft = sidebarWidthCollapsed;
-          header.style.width = `calc(100% - ${sidebarWidthCollapsed})`;
-          header.style.left = sidebarWidthCollapsed; 
-      }
+    if (!sidebar.classList.contains("sidebar-collapsed") && isCollapsedManually) {
+      sidebar.classList.add("sidebar-collapsed");
+      icon.classList.add("icon-rotated");
+      collapseMainContent.classList.remove("collapse-main-expanded");
+      collapseMainContent.classList.add("collapse-main-collapsed");
+      header.classList.remove("header-expanded");
+      header.classList.add("header-collapsed");
+    }
   });
-  }
+}
 
-
-// Create overlay element
+// Overlay handling
 const overlay = document.createElement("div");
-overlay.style.position = "fixed";
-overlay.style.top = "0";
-overlay.style.left = "0";
-overlay.style.width = "100%";
-overlay.style.height = "100%";
-overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-overlay.style.zIndex = "9998";
-overlay.style.display = "none";
+overlay.classList.add("overlay-hidden");
 document.body.appendChild(overlay);
 
 let mobileOverlayVisible = false;
 
-// Handle sidebar toggle
-if(menuToggle){
+if (menuToggle) {
   menuToggle.addEventListener("click", () => {
     if (!mobileOverlayVisible) {
-      // Open sidebar
-      sidebar.style.width = "18rem";
-      sidebar.style.display = "block";
-      sidebar.style.zIndex = "9999";
-      overlay.style.display = "block";
+      sidebar.classList.add("sidebar-visible");
+      overlay.classList.remove("overlay-hidden");
+      overlay.classList.add("overlay-visible");
       mobileOverlayVisible = true;
     } else {
-      // Close sidebar
       closeSidebar();
     }
   });
 }
 
-if(overlay){
+if (overlay) {
   overlay.addEventListener("click", () => {
     if (mobileOverlayVisible) {
       closeSidebar();
@@ -153,35 +146,37 @@ if(overlay){
   });
 }
 
-
-
-// Function to close the sidebar
 function closeSidebar() {
-  sidebar.style.width = "0";
-  sidebar.style.display = "none";
-  sidebar.style.zIndex = "0";
-  overlay.style.display = "none";
+  sidebar.classList.remove("sidebar-visible");
+  overlay.classList.remove("overlay-visible");
+  overlay.classList.add("overlay-hidden");
   mobileOverlayVisible = false;
 }
 
 const handleResize = () => {
   if (window.innerWidth >= 993) {
-    // Automatically show the sidebar for widths >= 993
-    sidebar.style.width = "18rem";
-    sidebar.style.display = "block";
-    overlay.style.display = "none";
-    mobileOverlayVisible = false;
-  } else {
-    // Automatically hide the sidebar for widths < 993
+    collapseMainContent.classList.remove("collapse-main-expanded");
+    header.classList.remove("header-expanded");
+    sidebar.classList.remove("sidebar-collapsed");
+    collapseMainContent.classList.remove("collapse-main-collapsed");
+    header.classList.remove("header-collapsed");
+    icon.classList.add('fa-bars');
+    icon.classList.remove('fa-arrow-right');
+    isCollapsedManually = false;
     closeSidebar();
+  } else {
+    collapseMainContent.classList.remove("collapse-main-expanded");
+    header.classList.remove("header-expanded");
+    sidebar.classList.remove("sidebar-collapsed");
+    collapseMainContent.classList.remove("collapse-main-collapsed");
+    header.classList.remove("header-collapsed");
+    closeSidebar();
+    isCollapsedManually = false;
   }
 };
 
 // Attach the resize event listener
 window.addEventListener("resize", handleResize);
-
-// Initial check on page load
-handleResize();
 
 if (selectAllCheckbox) {
   selectAllCheckbox.addEventListener('change', function () {
